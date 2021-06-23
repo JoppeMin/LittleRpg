@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: a36ac093f8402e442a9510a16ac9ce6b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - weaponBehaviour: {instanceID: 0}
+  - faceDirection: {instanceID: 0}
+  - faceSprite: {instanceID: 0}
+  - Particles: {instanceID: 0}
+  - ParticlesOutline: {instanceID: 0}
+  - AttackFace: {fileID: 21300000, guid: cf855cb67b05e6f4ab0c62d40352f70e, type: 3}
+  - NeutralFace: {fileID: 21300000, guid: b8ffe1c81713cb54fb2352375708b4f5, type: 3}
+  - BlockFace: {fileID: 21300000, guid: 28c02b15ad51d84409267da40afa3ea4, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
