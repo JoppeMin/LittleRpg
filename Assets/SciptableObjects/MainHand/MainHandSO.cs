@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName ="Weapon", menuName = "ScriptableObjects/Equipable/Weapon")]
-public class WeaponSO : ScriptableObject
+public class MainHandSO : ScriptableObject
 {
     [Range(1, 10)]
     public int attackSpeed;

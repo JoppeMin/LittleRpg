@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 8e300bf121230e7489bb577ada1385bd
+guid: 5bc467c7bbfed9a468eccb3575c7fae8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1085962105078222051
-    second: spellbook_0
+      213: 1872732258777413398
+    second: dagger_0
   - first:
-      213: 8750179080109165799
-    second: spellbook_1
+      213: -3278668394409182549
+    second: dagger_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -53,7 +53,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 52}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -133,43 +133,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spellbook_0
+      name: dagger_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 132
+        y: 145
         width: 256
-        height: 124
+        height: 111
       alignment: 9
-      pivot: {x: 0.50593084, y: 0.27999532}
+      pivot: {x: 0.3352215, y: 0.44712704}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ec09b8e7cc121f00800000000000000
-      internalID: 1085962105078222051
+      spriteID: 617b7d331184df910800000000000000
+      internalID: 1872732258777413398
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spellbook_1
+      name: dagger_1
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 23
         width: 256
-        height: 132
+        height: 111
       alignment: 9
-      pivot: {x: 0.53608954, y: 0.3617348}
+      pivot: {x: 0.6672882, y: 0.48080087}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ec06fe4381ee6970800000000000000
-      internalID: 8750179080109165799
+      spriteID: baab0f66774df72d0800000000000000
+      internalID: -3278668394409182549
       vertices: []
       indices: 
       edges: []

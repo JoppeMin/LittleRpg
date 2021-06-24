@@ -1,13 +1,19 @@
 fileFormatVersion: 2
-guid: 8e300bf121230e7489bb577ada1385bd
+guid: cacfcaed4fa467047a73dcaf4ee61cf1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1085962105078222051
-    second: spellbook_0
+      213: 5908513001516355035
+    second: cloudies_0
   - first:
-      213: 8750179080109165799
-    second: spellbook_1
+      213: -8979985618990590625
+    second: cloudies_1
+  - first:
+      213: -4119011521373969436
+    second: cloudies_2
+  - first:
+      213: 4291227380012965594
+    second: cloudies_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -133,43 +139,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spellbook_0
+      name: cloudies_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 132
-        width: 256
-        height: 124
-      alignment: 9
-      pivot: {x: 0.50593084, y: 0.27999532}
+        x: 63
+        y: 1055
+        width: 950
+        height: 973
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ec09b8e7cc121f00800000000000000
-      internalID: 1085962105078222051
+      spriteID: bddc82e25414ff150800000000000000
+      internalID: 5908513001516355035
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spellbook_1
+      name: cloudies_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 256
-        height: 132
-      alignment: 9
-      pivot: {x: 0.53608954, y: 0.3617348}
+        x: 1104
+        y: 1111
+        width: 852
+        height: 937
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ec06fe4381ee6970800000000000000
-      internalID: 8750179080109165799
+      spriteID: f5513f358aea06380800000000000000
+      internalID: -8979985618990590625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cloudies_2
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 63
+        width: 979
+        height: 972
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e363c248d456d6c0800000000000000
+      internalID: -4119011521373969436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cloudies_3
+      rect:
+        serializedVersion: 2
+        x: 1081
+        y: 102
+        width: 940
+        height: 927
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ade5a14f0908d8b30800000000000000
+      internalID: 4291227380012965594
       vertices: []
       indices: 
       edges: []

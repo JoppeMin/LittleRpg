@@ -112,6 +112,17 @@ public class @GameControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""2a46fb6e-6d38-42f9-88b5-05afc54455f2"",
+                    ""path"": ""<Mouse>/forwardButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Player"",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""c693f885-cd35-4e52-9d05-47dfc2eb92ec"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",

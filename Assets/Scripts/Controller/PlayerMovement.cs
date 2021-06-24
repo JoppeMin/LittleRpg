@@ -18,21 +18,20 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 movement;
     public Rigidbody2D rb;
     public Vector2 velocity;
-    private Vector2 mouseDir;
     private bool isAttacking = false;
 
     [SerializeField] OffHandSO offHand;
-    [SerializeField] WeaponSO weapon;
+    [SerializeField] MainHandSO mainHand;
 
-    [SerializeField] SpriteRenderer[] gearSlotsArray = new SpriteRenderer[4];
-    enum GearSlots
+    [SerializeField] SpriteRenderer[] gearSprites = new SpriteRenderer[4];
+    enum Gear
     {
         Armor,
         MainHand,
         OffHand,
         Helmet
     }
-    [SerializeField] Dictionary<GearSlots, SpriteRenderer> gearSlots = new Dictionary<GearSlots, SpriteRenderer>();
+    [SerializeField] Dictionary<Gear, SpriteRenderer> slot = new Dictionary<Gear, SpriteRenderer>();
 
     //sorting order
     int behindPlayer = -10;
@@ -44,9 +43,9 @@ public class PlayerMovement : MonoBehaviour
         SP = this;
         rb = gameObject.GetComponent<Rigidbody2D>();
 
-        for (int i = 0; i < gearSlotsArray.Length; i++)
+        for (int i = 0; i < gearSprites.Length; i++)
         {
-            gearSlots.Add((GearSlots) i, gearSlotsArray[i]);
+            slot.Add((Gear) i, gearSprites[i]);
         }
     }
 
@@ -57,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
         _controls.Input.Movement.Enable();
 
         _controls.Input.Attack.started += OnPlayerAttack;
+        _controls.Input.Attack.performed += OnPlayerAttack;
         _controls.Input.Attack.canceled += OnPlayerAttack;
         _controls.Input.Attack.Enable();
 
@@ -69,20 +69,16 @@ public class PlayerMovement : MonoBehaviour
         _controls.Input.Movement.Disable();
 
         _controls.Input.Attack.started -= OnPlayerAttack;
+        _controls.Input.Attack.performed -= OnPlayerAttack;
         _controls.Input.Attack.canceled -= OnPlayerAttack;
         _controls.Input.Attack.Enable();
     }
 
     #region Visual
-    private void Update()
-    {
-        FaceTowardsMouse();
-    }
 
-    private void FaceTowardsMouse()
+    private void CharacterFaceDirection(Vector2 mouseDir)
     {
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-        mouseDir = mousePos - (Vector2) this.transform.position;
+        
         
         //front view directions
         if (mouseDir.y < 0)
@@ -140,19 +136,19 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isInFront)
         {
-            gearSlots[GearSlots.OffHand].sortingOrder = frontPlayer;
-            gearSlots[GearSlots.OffHand].sprite = offHand.frontSprite;
+            slot[Gear.OffHand].sortingOrder = frontPlayer;
+            slot[Gear.OffHand].sprite = offHand.frontSprite;
         } else
         {
-            gearSlots[GearSlots.OffHand].sprite = offHand.backSprite;
-            gearSlots[GearSlots.OffHand].sortingOrder = behindPlayer;
+            slot[Gear.OffHand].sprite = offHand.backSprite;
+            slot[Gear.OffHand].sortingOrder = behindPlayer;
         }
     }
 
     private void MainhandInFront(bool isInFront, bool shouldFlip)
     {
-        gearSlots[GearSlots.MainHand].flipX = shouldFlip;
-        gearSlots[GearSlots.MainHand].sortingOrder = isInFront ? frontPlayer : behindPlayer;
+        slot[Gear.MainHand].flipX = shouldFlip;
+        slot[Gear.MainHand].sortingOrder = isInFront ? frontPlayer : behindPlayer;
     }
     #endregion
 
@@ -169,6 +165,10 @@ public class PlayerMovement : MonoBehaviour
     private void OnCharacterMove(InputAction.CallbackContext context)
     {
         movement = context.ReadValue<Vector2>();
+
+        if (!isAttacking)
+            CharacterFaceDirection(movement);
+
         bool isMoving = movement.magnitude > 0 ? true : false;
         AnimateWalk(isMoving);
         return;
@@ -176,7 +176,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnPlayerAttack(InputAction.CallbackContext context)
     {
-        if (context.started)
+        
+        if (context.started && !isAttacking)
         {
             isAttacking = true;
             StartCoroutine(StartAttack());
@@ -190,14 +191,26 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator StartAttack()
     {
-        gearSlots[GearSlots.MainHand].sprite = weapon.slashSprite;
-        Instantiate(weapon.projectile, this.transform.position, Quaternion.identity);
-        yield return new WaitForSeconds(2 / weapon.attackSpeed);
-        gearSlots[GearSlots.MainHand].sprite = weapon.idleSprite;
+        StartCoroutine(AttackSprite());
+        Instantiate(mainHand.projectile, (Vector2) this.transform.position + (Vector2.up * 1.5f), Quaternion.identity);
+
+        yield return new WaitForSeconds(1.5f / mainHand.attackSpeed);
+
         if (isAttacking)
         {
             StartCoroutine(StartAttack());
         }
+    }
+
+    IEnumerator AttackSprite()
+    {
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        Vector2 mouseDir = mousePos - (Vector2)this.transform.position;
+        CharacterFaceDirection(mouseDir);
+
+        slot[Gear.MainHand].sprite = mainHand.slashSprite;
+        yield return new WaitForSeconds(0.1f);
+        slot[Gear.MainHand].sprite = mainHand.idleSprite;
     }
     #endregion
 
