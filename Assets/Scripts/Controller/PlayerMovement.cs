@@ -83,14 +83,16 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         mouseDir = mousePos - (Vector2) this.transform.position;
-
+        
+        //front view directions
         if (mouseDir.y < 0)
         {
-            PlayerVisual.transform.localScale = Vector3.one;
+            this.transform.localScale = Vector3.one;
             PlayerVisual.sprite = PlayerBaseFront;
 
             if (mouseDir.x < 0)
             {
+
                 PlayerVisual.flipX = true;
 
                 MainhandInFront(true, true);
@@ -103,21 +105,23 @@ public class PlayerMovement : MonoBehaviour
                 MainhandInFront(false, false);
                 OffhandInFront(true);
             }
-        } else if (mouseDir.y > 0)
+        }
+        //back view directions
+        else if (mouseDir.y > 0)
         {
-            PlayerVisual.transform.localScale = new Vector3(-1, 1, 1);
+            this.transform.localScale = new Vector3(-1, 1, 1);
             PlayerVisual.sprite = PlayerBaseBack;
 
             if (mouseDir.x < 0)
             {
-                PlayerVisual.flipX = true;
+                PlayerVisual.flipX = false;
 
                 MainhandInFront(true, false);
                 OffhandInFront(false);
             }
             else if (mouseDir.x > 0)
-            {   
-                PlayerVisual.flipX = false;
+            {
+                PlayerVisual.flipX = true;
 
                 MainhandInFront(false, true);
                 OffhandInFront(true);
@@ -156,7 +160,7 @@ public class PlayerMovement : MonoBehaviour
 
     #endregion
 
-    #region Physics
+    #region Input and Physics
     private void FixedUpdate()
     {
         rb.velocity = (movement * velocity * Time.deltaTime);
@@ -187,7 +191,7 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator StartAttack()
     {
         gearSlots[GearSlots.MainHand].sprite = weapon.slashSprite;
-        Instantiate(weapon.projectile, gearSlots[GearSlots.MainHand].transform.position, Quaternion.identity);
+        Instantiate(weapon.projectile, this.transform.position, Quaternion.identity);
         yield return new WaitForSeconds(2 / weapon.attackSpeed);
         gearSlots[GearSlots.MainHand].sprite = weapon.idleSprite;
         if (isAttacking)
