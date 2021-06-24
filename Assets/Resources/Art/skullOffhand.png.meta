@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 5bc467c7bbfed9a468eccb3575c7fae8
+guid: 1a20029365ec8394aa7a81c25e3b69f5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1872732258777413398
-    second: dagger_0
+      213: 954405646905877970
+    second: skullOffhand_0
   - first:
-      213: -3278668394409182549
-    second: dagger_1
+      213: 2940095490440170982
+    second: skullOffhand_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -53,7 +53,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 52}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -133,43 +133,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dagger_0
+      name: skullOffhand_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 145
-        width: 256
-        height: 111
+        y: 120
+        width: 130
+        height: 136
       alignment: 9
-      pivot: {x: 0.7588827, y: 0.65729403}
+      pivot: {x: 0.6259301, y: 0.33749467}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 617b7d331184df910800000000000000
-      internalID: 1872732258777413398
+      spriteID: 2d5a37311eabe3d00800000000000000
+      internalID: 954405646905877970
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dagger_1
+      name: skullOffhand_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 23
-        width: 256
-        height: 111
+        x: 114
+        y: 0
+        width: 142
+        height: 141
       alignment: 9
-      pivot: {x: 0.6672882, y: 0.48080087}
+      pivot: {x: 0.5403509, y: 0.38099158}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: baab0f66774df72d0800000000000000
-      internalID: -3278668394409182549
+      spriteID: 6ed0a6175415dc820800000000000000
+      internalID: 2940095490440170982
       vertices: []
       indices: 
       edges: []

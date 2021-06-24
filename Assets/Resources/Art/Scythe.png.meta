@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 5bc467c7bbfed9a468eccb3575c7fae8
+guid: 5cb26d079e5dd83429c17938a17b5318
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1872732258777413398
-    second: dagger_0
+      213: -8702967748025807226
+    second: Scythe_0
   - first:
-      213: -3278668394409182549
-    second: dagger_1
+      213: -719146773681135519
+    second: Scythe_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -53,7 +53,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 52}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -133,43 +133,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dagger_0
+      name: Scythe_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 145
-        width: 256
-        height: 111
+        y: 0
+        width: 116
+        height: 256
       alignment: 9
-      pivot: {x: 0.7588827, y: 0.65729403}
+      pivot: {x: 0.30594835, y: 0.33213422}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 617b7d331184df910800000000000000
-      internalID: 1872732258777413398
+      spriteID: 68e8d3781f8d83780800000000000000
+      internalID: -8702967748025807226
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dagger_1
+      name: Scythe_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 23
-        width: 256
-        height: 111
+        x: 116
+        y: 0
+        width: 140
+        height: 256
       alignment: 9
-      pivot: {x: 0.6672882, y: 0.48080087}
+      pivot: {x: 0.03968511, y: 0.36010382}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: baab0f66774df72d0800000000000000
-      internalID: -3278668394409182549
+      spriteID: 1602e5dc1d31506f0800000000000000
+      internalID: -719146773681135519
       vertices: []
       indices: 
       edges: []

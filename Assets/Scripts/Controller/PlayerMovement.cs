@@ -18,7 +18,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 movement;
     public Rigidbody2D rb;
     public Vector2 velocity;
+    private float baseAttackSpeed = 1.5f;
     private bool isAttacking = false;
+    private float attackTimer;
 
     [SerializeField] OffHandSO offHand;
     [SerializeField] MainHandSO mainHand;
@@ -81,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
         
         
         //front view directions
-        if (mouseDir.y < 0)
+        if (mouseDir.y <= 0)
         {
             this.transform.localScale = Vector3.one;
             PlayerVisual.sprite = PlayerBaseFront;
@@ -92,14 +94,14 @@ public class PlayerMovement : MonoBehaviour
                 PlayerVisual.flipX = true;
 
                 MainhandInFront(true, true);
-                OffhandInFront(false);
+                OffhandInFront(false, false);
             }
-            else if (mouseDir.x > 0)
+            else if (mouseDir.x >= 0)
             {
                 PlayerVisual.flipX = false;
 
                 MainhandInFront(false, false);
-                OffhandInFront(true);
+                OffhandInFront(true, false);
             }
         }
         //back view directions
@@ -113,14 +115,14 @@ public class PlayerMovement : MonoBehaviour
                 PlayerVisual.flipX = false;
 
                 MainhandInFront(true, false);
-                OffhandInFront(false);
+                OffhandInFront(false, false);
             }
-            else if (mouseDir.x > 0)
+            else if (mouseDir.x >= 0)
             {
                 PlayerVisual.flipX = true;
 
                 MainhandInFront(false, true);
-                OffhandInFront(true);
+                OffhandInFront(true, false);
             }
         }
         
@@ -132,8 +134,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
     #region SpriteSorting
-    private void OffhandInFront(bool isInFront)
+    private void OffhandInFront(bool isInFront, bool shouldFlip)
     {
+        slot[Gear.OffHand].flipX = shouldFlip;
         if (isInFront)
         {
             slot[Gear.OffHand].sortingOrder = frontPlayer;
@@ -157,6 +160,10 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     #region Input and Physics
+    private void Update()
+    {
+        attackTimer += Time.deltaTime;
+    }
     private void FixedUpdate()
     {
         rb.velocity = (movement * velocity * Time.deltaTime);
@@ -177,7 +184,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnPlayerAttack(InputAction.CallbackContext context)
     {
         
-        if (context.started && !isAttacking)
+        if (context.started && !isAttacking && attackTimer > (baseAttackSpeed / mainHand.attackSpeed))
         {
             isAttacking = true;
             StartCoroutine(StartAttack());
@@ -191,10 +198,12 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator StartAttack()
     {
+        attackTimer = 0;
         StartCoroutine(AttackSprite());
+        
         Instantiate(mainHand.projectile, (Vector2) this.transform.position + (Vector2.up * 1.5f), Quaternion.identity);
 
-        yield return new WaitForSeconds(1.5f / mainHand.attackSpeed);
+        yield return new WaitForSeconds(baseAttackSpeed / mainHand.attackSpeed);
 
         if (isAttacking)
         {
