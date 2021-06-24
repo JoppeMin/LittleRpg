@@ -92,20 +92,16 @@ public class PlayerMovement : MonoBehaviour
             if (mouseDir.x < 0)
             {
                 PlayerVisual.flipX = true;
-                gearSlots[GearSlots.MainHand].sortingOrder = frontPlayer;
-                gearSlots[GearSlots.MainHand].flipX = true;
 
-                gearSlots[GearSlots.OffHand].sortingOrder = behindPlayer;
-                gearSlots[GearSlots.OffHand].sprite = shield[1];
+                MainhandInFront(true, true);
+                OffhandInFront(false);
             }
             else if (mouseDir.x > 0)
             {
                 PlayerVisual.flipX = false;
-                gearSlots[GearSlots.MainHand].sortingOrder = behindPlayer;
-                gearSlots[GearSlots.MainHand].flipX = false;
 
-                gearSlots[GearSlots.OffHand].sortingOrder = frontPlayer;
-                gearSlots[GearSlots.OffHand].sprite = shield[0];
+                MainhandInFront(false, false);
+                OffhandInFront(true);
             }
         } else if (mouseDir.y > 0)
         {
@@ -115,20 +111,16 @@ public class PlayerMovement : MonoBehaviour
             if (mouseDir.x < 0)
             {
                 PlayerVisual.flipX = true;
-                gearSlots[GearSlots.MainHand].sortingOrder = frontPlayer;
-                gearSlots[GearSlots.MainHand].flipX = false;
 
-                gearSlots[GearSlots.OffHand].sprite = shield[1];
-                gearSlots[GearSlots.OffHand].sortingOrder = behindPlayer;
+                MainhandInFront(true, false);
+                OffhandInFront(false);
             }
             else if (mouseDir.x > 0)
             {   
                 PlayerVisual.flipX = false;
-                gearSlots[GearSlots.MainHand].sortingOrder = behindPlayer;
-                gearSlots[GearSlots.MainHand].flipX = true;
 
-                gearSlots[GearSlots.OffHand].sortingOrder = frontPlayer;
-                gearSlots[GearSlots.OffHand].sprite = shield[0];
+                MainhandInFront(false, true);
+                OffhandInFront(true);
             }
         }
         
@@ -138,6 +130,30 @@ public class PlayerMovement : MonoBehaviour
     {
             animator.SetBool("Moving", shouldAnimate);
     }
+
+    #region SpriteSorting
+    private void OffhandInFront(bool isInFront)
+    {
+        if (isInFront)
+        {
+            gearSlots[GearSlots.OffHand].sortingOrder = frontPlayer;
+            gearSlots[GearSlots.OffHand].sprite = shield[0];
+        } else
+        {
+            gearSlots[GearSlots.OffHand].sprite = shield[1];
+            gearSlots[GearSlots.OffHand].sortingOrder = behindPlayer;
+        }
+    }
+
+    private void MainhandInFront(bool isInFront, bool shouldFlip)
+    {
+        gearSlots[GearSlots.MainHand].flipX = shouldFlip;
+        gearSlots[GearSlots.MainHand].sortingOrder = isInFront ? frontPlayer : behindPlayer;
+    }
+    #endregion
+
+
+
     #endregion
 
     #region Physics
