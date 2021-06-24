@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 mouseDir;
     private bool isAttacking = false;
 
-    [SerializeField] Sprite[] shield = new Sprite[2];
+    [SerializeField] OffHandSO offHand;
     [SerializeField] WeaponSO weapon;
 
     [SerializeField] SpriteRenderer[] gearSlotsArray = new SpriteRenderer[4];
@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     #region Visual
-    private void LateUpdate()
+    private void Update()
     {
         FaceTowardsMouse();
     }
@@ -141,10 +141,10 @@ public class PlayerMovement : MonoBehaviour
         if (isInFront)
         {
             gearSlots[GearSlots.OffHand].sortingOrder = frontPlayer;
-            gearSlots[GearSlots.OffHand].sprite = shield[0];
+            gearSlots[GearSlots.OffHand].sprite = offHand.frontSprite;
         } else
         {
-            gearSlots[GearSlots.OffHand].sprite = shield[1];
+            gearSlots[GearSlots.OffHand].sprite = offHand.backSprite;
             gearSlots[GearSlots.OffHand].sortingOrder = behindPlayer;
         }
     }
