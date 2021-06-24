@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
 
     //sorting order
     int behindPlayer = -10;
-    int frontPlayer = -10;
+    int frontPlayer = 10;
 
     private void Awake()
     {
